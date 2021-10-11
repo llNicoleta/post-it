@@ -1,0 +1,10 @@
+<img
+  src="{{source || defaultAvatar}}"
+  alt="{{alt}}"
+  [ngClass]="{
+  'small':size=='sm'||!size,
+  'medium':size=='md',
+  'large':size=='lg',
+  'circle':shape=='circle'||!shape,
+  'square':shape=='square'}"
+>

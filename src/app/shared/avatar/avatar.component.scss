@@ -1,0 +1,26 @@
+:host {
+  line-height: 0;
+}
+
+img {
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
+
+
+  .small {
+    height: 1.5rem;
+  }
+
+  .medium {
+    height: 2rem;
+  }
+
+  .large {
+    height: 2.5rem;
+  }
+
+  .circle {
+    border-radius: 50%;
+  }
+}
