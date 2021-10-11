@@ -1,0 +1,5 @@
+<div *ngIf="option" class="header-option">
+  <avatar *ngIf="option.avatar" [avatar]="option.avatar"></avatar>
+  <mat-icon *ngIf="option.icon" class="header-option-icon">{{option.icon}}</mat-icon>
+  <h5 class="header-option-title">{{option.title}}</h5>
+</div>

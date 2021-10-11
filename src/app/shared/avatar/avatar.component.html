@@ -1,10 +1,11 @@
 <img
-  src="{{source || defaultAvatar}}"
-  alt="{{alt}}"
+  *ngIf="avatar"
+  src="{{avatar.source || defaultAvatar}}"
+  alt="{{avatar.alt}}"
   [ngClass]="{
-  'small':size=='sm'||!size,
-  'medium':size=='md',
-  'large':size=='lg',
-  'circle':shape=='circle'||!shape,
-  'square':shape=='square'}"
+  'small':avatar.size=='sm'||!avatar.size,
+  'medium':avatar.size=='md',
+  'large':avatar.size=='lg',
+  'circle':avatar.shape=='circle'||!avatar.shape,
+  'square':avatar.shape=='square'}"
 >

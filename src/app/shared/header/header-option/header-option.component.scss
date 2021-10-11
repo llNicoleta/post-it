@@ -1,0 +1,19 @@
+.header-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1.25rem;
+  color: gray;
+  cursor: pointer;
+  justify-content: center;
+
+  &:hover {
+    color: black;
+  }
+
+  .header-option-title {
+    padding: 0.1rem 0;
+    font-weight: lighter;
+    font-size: 0.75rem;
+  }
+}
