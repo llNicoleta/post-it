@@ -12,6 +12,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 import { HeaderOptionComponent } from './shared/header/header-option/header-option.component';
 import { AvatarComponent } from './shared/avatar/avatar.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatCardModule} from "@angular/material/card";
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,7 +25,10 @@ import { AvatarComponent } from './shared/avatar/avatar.component';
     HomePageComponent,
     HeaderComponent,
     HeaderOptionComponent,
-    AvatarComponent
+    AvatarComponent,
+    SignInComponent,
+    SignUpComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,11 @@ import { AvatarComponent } from './shared/avatar/avatar.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
