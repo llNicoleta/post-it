@@ -1,0 +1,51 @@
+<div class="container">
+  <h1>Sign Up</h1>
+  <mat-stepper #stepper>
+    <mat-step [stepControl]="credentialsForm">
+      <mat-card>
+        <form [formGroup]="credentialsForm">
+          <ng-template matStepLabel>Credentials</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input formControlName="username" matInput type="text" placeholder="Username" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput type="password" placeholder="Password" required>
+            <mat-error *ngIf="credentialsForm.controls['password'].hasError('minlength')">
+              The password must have at least 8 characters.
+            </mat-error>
+          </mat-form-field>
+          <button mat-button matStepperNext>Next</button>
+        </form>
+      </mat-card>
+    </mat-step>
+    <mat-step [stepControl]="extraForm">
+      <mat-card>
+        <form [formGroup]="extraForm">
+          <ng-template matStepLabel>Extra info</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input formControlName="firstName" matInput type="text" placeholder="First Name">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input formControlName="lastName" matInput type="text" placeholder="Last Name">
+          </mat-form-field>
+          <mat-label>Upload a photo</mat-label>
+          <input formControlName="photo" type="file" placeholder="Photo" accept="image/png, image/jpeg">
+          <mat-form-field appearance="outline">
+            <mat-label>Add a description</mat-label>
+            <textarea formControlName="description" matInput type="text" placeholder="Description"></textarea>
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+        </form>
+      </mat-card>
+      <button type="submit" mat-flat-button color="primary" [disabled]="!credentialsForm.valid">Sign Up</button>
+    </mat-step>
+  </mat-stepper>
+  <div class="sign-up">
+    <p>Already have an account?</p>
+    <a mat-button color="primary" [routerLink]="['/sign-in']">Sign In</a>
+  </div>
+</div>

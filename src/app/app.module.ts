@@ -18,6 +18,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
