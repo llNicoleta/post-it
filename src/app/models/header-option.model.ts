@@ -1,7 +1,7 @@
 import {AvatarModel} from "./avatar.model";
 
 export interface HeaderOptionModel {
-  title: string,
-  icon?: string,
+  title: string | undefined,
+  icon?: string | undefined,
   avatar?: AvatarModel | undefined | null,
 }

@@ -21,12 +21,16 @@ export class AuthService {
       if (user) {
         this.userState = user;
         localStorage.setItem('user', JSON.stringify(this.userState));
-        JSON.parse(<string>localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', '');
-        JSON.parse(<string>localStorage.getItem('user'));
+        JSON.parse(localStorage.getItem('user')!);
+        this.afs.collection<UserModel>('Users').valueChanges().subscribe(data => {
+          data = data.filter(({id}) => id === user.uid!);
+          this.currentUser = data[0];
+        });
+    } else {
+        localStorage.setItem('user', '{}');
+        JSON.parse(localStorage.getItem('user')!);
       }
-    })
+    });
   }
 
   signIn(username: string, password: string) {
@@ -36,17 +40,15 @@ export class AuthService {
           this.afs.collection<UserModel>('Users').valueChanges().subscribe(data => {
             data = data.filter(({id}) => id === result.user?.uid);
             this.currentUser = data[0];
-            console.log(this.currentUser)
           });
           this.router.navigate(['home']).then();
         });
-        // this.setUserData(result.user).then();
       }).catch((error) => {
         window.alert(error.message)
       })
   }
 
-    signUp(user: UserModel) {
+  signUp(user: UserModel) {
     return this.afAuth.createUserWithEmailAndPassword(user.email, <string>user.password)
       .then((result) => {
         this.afs.collection('Users').doc(result.user?.uid).set({
@@ -72,8 +74,8 @@ export class AuthService {
   signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.currentUser = undefined;
       this.router.navigate(['sign-in']).then();
-    })
+    }).catch(err => console.log(err))
+
   }
 }
