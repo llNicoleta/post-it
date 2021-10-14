@@ -14,7 +14,7 @@
         </mat-error>
       </mat-form-field>
     </form>
-    <button type="submit" mat-flat-button color="primary" [disabled]="!signInForm.valid">Sign in</button>
+    <button type="submit" mat-flat-button color="primary" [disabled]="!signInForm.valid" (click)="signIn()">Sign in</button>
   </mat-card>
   <div class="sign-up">
     <p>Don't have an account?</p>

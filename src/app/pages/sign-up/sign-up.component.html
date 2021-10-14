@@ -10,6 +10,13 @@
             <input formControlName="username" matInput type="text" placeholder="Username" required>
           </mat-form-field>
           <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput type="text" placeholder="Email" required>
+            <mat-error *ngIf="credentialsForm.controls['password'].hasError('email')">
+              The email address isn't valid.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input formControlName="password" matInput type="password" placeholder="Password" required>
             <mat-error *ngIf="credentialsForm.controls['password'].hasError('minlength')">
@@ -41,7 +48,7 @@
           <button mat-button matStepperPrevious>Back</button>
         </form>
       </mat-card>
-      <button type="submit" mat-flat-button color="primary" [disabled]="!credentialsForm.valid">Sign Up</button>
+      <button type="submit" mat-flat-button color="primary" [disabled]="!credentialsForm.valid" (click)="signUp()">Sign Up</button>
     </mat-step>
   </mat-stepper>
   <div class="sign-up">

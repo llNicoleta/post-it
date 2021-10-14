@@ -19,6 +19,7 @@ import {MatCardModule} from "@angular/material/card";
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatStepperModule} from "@angular/material/stepper";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatInputModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatStepperModule
+    MatStepperModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
