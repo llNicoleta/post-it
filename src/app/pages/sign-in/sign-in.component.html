@@ -3,8 +3,11 @@
   <mat-card>
     <form [formGroup]="signInForm">
       <mat-form-field appearance="outline">
-        <mat-label>Username</mat-label>
-        <input formControlName="username" matInput type="text" placeholder="Username" required>
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput type="text" placeholder="Username" required>
+        <mat-error *ngIf="signInForm.controls['email'].hasError('email')">
+          The email address isn't valid.
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>

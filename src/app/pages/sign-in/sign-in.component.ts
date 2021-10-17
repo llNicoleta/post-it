@@ -18,12 +18,12 @@ export class SignInComponent implements OnInit {
 
   buildForm() {
     this.signInForm = new FormGroup({
-      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
     })
   }
 
   signIn() {
-    this.authService.signIn(this.signInForm.value.username, this.signInForm.value.password).then();
+    this.authService.signIn(this.signInForm.value.email, this.signInForm.value.password).then();
   }
 }
