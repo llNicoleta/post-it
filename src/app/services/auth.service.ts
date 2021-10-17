@@ -15,7 +15,7 @@ export class AuthService {
     private afs: AngularFirestore,
     private afAuth: AngularFireAuth,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
   ) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -26,7 +26,7 @@ export class AuthService {
           data = data.filter(({id}) => id === user.uid!);
           this.currentUser = data[0];
         });
-    } else {
+      } else {
         localStorage.setItem('user', '{}');
         JSON.parse(localStorage.getItem('user')!);
       }
@@ -60,7 +60,9 @@ export class AuthService {
           description: user.description,
           photo: user.photo,
           isModerator: user.isModerator
-        }).then(r => this.router.navigate(['sign-in']));
+        }).then(r => {
+          this.router.navigate(['home']).then();
+        });
       }).catch((error) => {
         window.alert(error.message)
       })
