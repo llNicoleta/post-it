@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feed-input-container {
+  background-color: white;
+  padding: 0.625rem 0.625rem 1.25rem 0.625rem;
+  border-radius: 0.625rem;
+  margin-bottom: 1.25rem;
+}
+
+.feed-input {
+  border: 1px solid lightgray;
+  border-radius: 1.875rem;
+  display: flex;
+  color: gray;
+  padding: 0.625rem 0.625rem 0.625rem 0.938rem;
+}
+
+.feed-input > form {
+  display: flex;
+  width: 100%;
+}
+
+.feed-input > form > input {
+  border: none;
+  flex: 1;
+  margin-left: 0.625rem;
+  outline-width: 0;
+}
+
+.feed-input > form > button {
+  display: none;
+}
+
+.feed-input-options {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+}

@@ -17,9 +17,10 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatStepperModule} from "@angular/material/stepper";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import { PostComponent } from './shared/post/post.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
     AvatarComponent,
     SignInComponent,
     SignUpComponent,
+    PostComponent,
 
   ],
   imports: [
@@ -44,7 +46,8 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
     MatCardModule,
     ReactiveFormsModule,
     MatStepperModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
