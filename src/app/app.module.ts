@@ -21,6 +21,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatStepperModule} from "@angular/material/stepper";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { PostComponent } from './shared/post/post.component';
+import { ReactionComponent } from './shared/post/reaction/reaction.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PostComponent } from './shared/post/post.component';
     SignInComponent,
     SignUpComponent,
     PostComponent,
+    ReactionComponent,
 
   ],
   imports: [
