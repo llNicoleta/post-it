@@ -9,7 +9,7 @@ import {UserModel} from "../models/user.model";
 })
 export class AuthService {
   userState: any;
-  currentUser: UserModel | undefined;
+  currentUser: UserModel;
 
   constructor(
     private afs: AngularFirestore,
@@ -60,7 +60,7 @@ export class AuthService {
           description: user.description,
           photo: user.photo,
           isModerator: user.isModerator
-        }).then(r => {
+        }).then(() => {
           this.router.navigate(['home']).then();
         });
       }).catch((error) => {
