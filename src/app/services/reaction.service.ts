@@ -9,11 +9,10 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class ReactionService {
-  private dbPath = '/reactions'
+  private dbPath = '/reactions';
 
   userReactions = [];
   userId: string;
-  initialReaction = false;
   emojiList = ['like', 'love', 'wow', 'haha', 'sad', 'angry'];
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
@@ -35,7 +34,7 @@ export class ReactionService {
 
   removeReaction(postId: string | undefined) {
     const data = {[this.userId]: null}
-    this.afs.collection(this.dbPath).doc(`/${postId}`).set({...data}, {merge: true});
+    this.afs.collection(this.dbPath).doc(postId).set({...data}, {merge: true});
   }
 
   countReactions(reactions: any) {
@@ -43,6 +42,6 @@ export class ReactionService {
   }
 
   userReaction(postId: string | undefined, reactions: any) {
-    return (_.get(reactions, [`${this.userId}`]))
+    return _.get(reactions, [`${this.userId}`]);
   }
 }
