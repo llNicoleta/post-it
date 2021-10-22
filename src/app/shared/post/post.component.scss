@@ -3,6 +3,7 @@
   padding: 1rem;
   margin-bottom: 0.625rem;
   border-radius: 0.625rem;
+  box-shadow: 1px 1px 5px lightgray ;
 }
 
 .post-header {
@@ -21,6 +22,7 @@
 
 .post-body {
   overflow-wrap: anywhere;
+  margin: 1rem 0;
 }
 
 .post-buttons {

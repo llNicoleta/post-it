@@ -1,3 +1,29 @@
+.container {
+  margin-top: 2rem;
+  border-top: lightgray 1px solid;
+  position: relative;
+}
+
+.like-reaction {
+  margin-top: 1rem;
+  position: relative;
+}
+
+.display-reactions {
+  display: flex;
+  align-items: center;
+}
+
+
 .reactions {
   display: flex;
+  padding: 0.4rem 0;
+}
+
+.emojis > span > img {
+  transition: ease-in-out 100ms;
+   &:hover {
+     width: 40px;
+     object-fit: contain;
+   }
 }
