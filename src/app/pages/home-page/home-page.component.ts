@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostModel} from "../../models/post.model";
 import {PostsService} from "../../services/posts.service";
 import {map} from "rxjs/operators";
@@ -11,10 +11,10 @@ import {AuthService} from "../../services/auth.service";
 })
 export class HomePageComponent implements OnInit {
 
-  posts: Array<PostModel> | undefined;
+  posts: Array<PostModel>;
   inputValue: string = '';
 
-  constructor(private postsService: PostsService, private authService: AuthService) { }
+  constructor(private postsService: PostsService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.retrievePosts();
@@ -33,13 +33,13 @@ export class HomePageComponent implements OnInit {
   }
 
   addPost(): void {
-    this.postsService.create( {
+    this.postsService.create({
       userId: this.authService.currentUser?.id,
       username: this.authService.currentUser?.username,
       description: this.authService.currentUser?.description,
       message: this.inputValue,
       imageUrl: '',
       timestamp: Date.now()
-    }).then(r => this.inputValue = '');
+    }).then(() => this.inputValue = '');
   }
 }

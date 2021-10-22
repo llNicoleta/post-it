@@ -2,16 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("../../../assets/images/layered-waves-haikei.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .feed-input-container {
-  background-color: white;
   padding: 0.625rem 0.625rem 1.25rem 0.625rem;
   border-radius: 0.625rem;
   margin-bottom: 1.25rem;
 }
 
 .feed-input {
+  background-color: white;
   border: 1px solid lightgray;
   border-radius: 1.875rem;
   display: flex;
@@ -43,5 +47,5 @@
 .posts {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 35%;
 }
