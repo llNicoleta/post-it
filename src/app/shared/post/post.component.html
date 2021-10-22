@@ -2,18 +2,39 @@
   <div class="post-header">
     <avatar [avatar]="{size: 'lg'}"></avatar>
     <div class="post-info">
-      <h2>{{post.username}}</h2>
+      <h3>{{post.username}}</h3>
       <p>{{post.description}}</p>
     </div>
   </div>
   <div class="post-body">
     <p>{{post.message}}</p>
   </div>
-  <reaction [postId]="post.id"></reaction>
-<!--  <div class="post-buttons">-->
-<!--    <input-option [icon]="'thumb_up_alt_outline'" [title]="'like' | titlecase"></input-option>-->
-<!--    <input-option [icon]="'chat_outline'" [title]="'comment' | titlecase"></input-option>-->
-<!--    <input-option [icon]="'share_outline'" [title]="'share' | titlecase"></input-option>-->
-<!--    <input-option [icon]="'send_outline'" [title]="'send' | titlecase"></input-option>-->
-<!--  </div>-->
+
+  <div class="post-interaction">
+    <reaction [postId]="post.id"></reaction>
+    <div class="comments">
+      <p (click)="toggleShowComments()" [ngClass]="{'pressed': showComments}"><strong>Comment</strong></p>
+      <h5>Comments: {{countComments()}}</h5>
+    </div>
+  </div>
+  <!--  <div class="post-buttons">-->
+  <!--    <input-option [icon]="'thumb_up_alt_outline'" [title]="'like' | titlecase"></input-option>-->
+  <!--    <input-option [icon]="'chat_outline'" [title]="'comment' | titlecase"></input-option>-->
+  <!--    <input-option [icon]="'share_outline'" [title]="'share' | titlecase"></input-option>-->
+  <!--    <input-option [icon]="'send_outline'" [title]="'send' | titlecase"></input-option>-->
+  <!--  </div>-->
+</div>
+
+<div [hidden]="!showComments"  class="comment-section">
+  <h3>Comments</h3>
+  <div class="comment-input">
+    <mat-icon>create</mat-icon>
+    <form (ngSubmit)="addComment()">
+      <input [(ngModel)]="inputValue" name="comment" type="text">
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <div class="all-comments">
+    <comment *ngFor="let comment of comments" [comment]="comment"></comment>
+  </div>
 </div>

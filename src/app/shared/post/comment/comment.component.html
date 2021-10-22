@@ -1,0 +1,11 @@
+<div *ngIf="comment" class="comment">
+  <div class="comment-header">
+    <avatar [avatar]="{size: 'sm'}"></avatar>
+    <div class="comment-info">
+      <h4>{{comment.username}}</h4>
+    </div>
+  </div>
+  <div class="comment-body">
+    <p>{{comment.comment}}</p>
+  </div>
+</div>

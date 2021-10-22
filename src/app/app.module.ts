@@ -22,6 +22,7 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { PostComponent } from './shared/post/post.component';
 import { ReactionComponent } from './shared/post/reaction/reaction.component';
+import { CommentComponent } from './shared/post/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ReactionComponent } from './shared/post/reaction/reaction.component';
     SignUpComponent,
     PostComponent,
     ReactionComponent,
+    CommentComponent,
 
   ],
   imports: [

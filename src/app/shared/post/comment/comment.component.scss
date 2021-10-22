@@ -1,0 +1,18 @@
+.comment-header {
+  display: flex;
+  margin-bottom: 0.625rem;
+}
+
+.comment-info {
+  margin-left: 0.625rem;
+}
+
+.comment-info > p {
+  font-size: 12px;
+  color: gray;
+}
+
+.comment-body {
+  overflow-wrap: anywhere;
+  margin: 1rem 0;
+}

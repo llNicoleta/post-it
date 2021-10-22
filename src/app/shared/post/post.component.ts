@@ -1,5 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PostModel} from "../../models/post.model";
+import {CommentsService} from "../../services/comments.service";
+import {AuthService} from "../../services/auth.service";
+import {map} from "rxjs/operators";
+import {CommentModel} from "../../models/comment.model";
 
 @Component({
   selector: 'post',
@@ -10,9 +14,52 @@ export class PostComponent implements OnInit {
   @Input()
   post: PostModel;
 
-  constructor() { }
+  comments: CommentModel[];
 
-  ngOnInit(): void {
+  showComments: boolean;
+
+  @Input()
+  index: number;
+
+  inputValue: string;
+
+  constructor(private commentsService: CommentsService, private authService: AuthService) {
   }
 
+  ngOnInit(): void {
+    this.retrieveComments();
+    this.showComments = false;
+  }
+
+  toggleShowComments() {
+    this.showComments= !this.showComments;
+  }
+
+  retrieveComments() {
+    this.commentsService.getComments(this.post.id).snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => {
+            const data = c.payload.doc.data() as CommentModel;
+            return {id: c.payload.doc.id, ...data};
+          }
+        ))
+    ).subscribe(data => {
+      this.comments = data;
+      console.log(this.comments)
+    })
+  }
+
+  addComment() {
+    this.commentsService.addComment({
+      userId: this.authService.currentUser.id,
+      username: this.authService.currentUser.username,
+      comment: this.inputValue,
+      timestamp: Date.now(),
+      postId: this.post.id
+    }).then(() => this.inputValue = '');
+  }
+
+  countComments() {
+    return this.comments && this.comments.length ? this.comments.length : 0;
+  }
 }

@@ -3,7 +3,7 @@
   padding: 1rem;
   margin-bottom: 0.625rem;
   border-radius: 0.625rem;
-  box-shadow: 1px 1px 5px lightgray ;
+  box-shadow: 1px 1px 5px lightgray;
 }
 
 .post-header {
@@ -28,4 +28,83 @@
 .post-buttons {
   display: flex;
   justify-content: space-evenly;
+}
+
+.post-interaction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-section {
+  position: fixed;
+  right: 1rem;
+  bottom: 0;
+  width: 25%;
+  height: 75%;
+  background-color: white;
+  box-shadow: 1px 1px 5px lightgray;
+  margin: 1rem;
+  border-radius: 0.625rem;
+
+  & > h3 {
+    padding: 1rem 1rem 0;
+  }
+}
+
+.comment-input {
+  border: 1px solid lightgray;
+  border-radius: 1.875rem;
+  display: flex;
+  color: gray;
+  padding: 0.625rem 0.625rem 0.625rem 0.938rem;
+  bottom: 10px;
+  left: 10px;
+  width: 90%;
+  position: absolute;
+  margin: 0 auto;
+}
+
+.comment-input > form {
+  display: flex;
+  width: 100%;
+}
+
+.comment-input > form > input {
+  border: none;
+  flex: 1;
+  margin-left: 0.625rem;
+  outline-width: 0;
+}
+
+.comment-input > form > button {
+  display: none;
+}
+
+.all-comments {
+  margin: 1rem 1rem;
+  height: 80%;
+  overflow-y: auto;
+}
+
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+
+  & > p {
+    padding: 0.2rem;
+    &:hover {
+      cursor: pointer;
+      background-color: lightgray;
+      border-radius: 5px;
+    }
+  }
+}
+
+.pressed {
+  cursor: pointer;
+  background-color: lightgray;
+  border-radius: 5px;
 }
