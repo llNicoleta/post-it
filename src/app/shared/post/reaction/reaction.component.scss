@@ -14,7 +14,6 @@
   align-items: center;
 }
 
-
 .reactions {
   display: flex;
   padding: 0.4rem 0;
@@ -26,4 +25,13 @@
      width: 40px;
      object-fit: contain;
    }
+}
+
+.like {
+  padding: 0.2rem;
+  &:hover {
+    cursor: pointer;
+    background-color: lightgray;
+    border-radius: 5px;
+  }
 }
