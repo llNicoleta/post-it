@@ -8,6 +8,7 @@ import {UserModel} from "../models/user.model";
   providedIn: 'root'
 })
 export class AuthService {
+  dbPath = '/users';
   userState: any;
   currentUser: UserModel;
 
@@ -22,7 +23,7 @@ export class AuthService {
         this.userState = user;
         localStorage.setItem('user', JSON.stringify(this.userState));
         JSON.parse(localStorage.getItem('user')!);
-        this.afs.collection<UserModel>('Users').valueChanges().subscribe(data => {
+        this.afs.collection<UserModel>(this.dbPath).valueChanges().subscribe(data => {
           data = data.filter(({id}) => id === user.uid!);
           this.currentUser = data[0];
         });
@@ -37,7 +38,7 @@ export class AuthService {
     return this.afAuth.signInWithEmailAndPassword(username, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.afs.collection<UserModel>('Users').valueChanges().subscribe(data => {
+          this.afs.collection<UserModel>(this.dbPath).valueChanges().subscribe(data => {
             data = data.filter(({id}) => id === result.user?.uid);
             this.currentUser = data[0];
           });
@@ -51,7 +52,7 @@ export class AuthService {
   signUp(user: UserModel) {
     return this.afAuth.createUserWithEmailAndPassword(user.email, <string>user.password)
       .then((result) => {
-        this.afs.collection('Users').doc(result.user?.uid).set({
+        this.afs.collection(this.dbPath).doc(result.user?.uid).set({
           id: result.user?.uid,
           email: user.email,
           username: user.username,
