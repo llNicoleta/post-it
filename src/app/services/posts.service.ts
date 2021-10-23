@@ -21,8 +21,8 @@ export class PostsService {
     return this.postsReference.add({...post});
   }
 
-  delete(postId: string | undefined) {
-    return this.postsReference.doc(postId).delete();
+  delete(postId?: string) {
+    this.postsReference.doc(postId).delete();
   }
 
   getUserPosts(userId: string | null) {

@@ -20,7 +20,7 @@ export class CommentsService {
     return this.afs.collection(this.dbPath).add({...comment});
   }
 
-  deleteComment(commentId: string | undefined) {
-    return this.afs.collection(this.dbPath).doc(commentId).delete();
+  deleteComment(commentId?: string) {
+    this.afs.collection(this.dbPath).doc(commentId).delete();
   }
 }

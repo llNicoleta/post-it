@@ -37,6 +37,10 @@ export class ReactionService {
     this.afs.collection(this.dbPath).doc(postId).set({...data}, {merge: true});
   }
 
+  deleteReactions(postId?: string) {
+    this.afs.collection(this.dbPath).doc(postId).delete();
+  }
+
   countReactions(reactions: any) {
     return _.mapValues(_.groupBy(reactions), 'length');
   }

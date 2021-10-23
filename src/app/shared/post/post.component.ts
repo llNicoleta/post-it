@@ -6,6 +6,7 @@ import {map} from "rxjs/operators";
 import {CommentModel} from "../../models/comment.model";
 import {Router} from "@angular/router";
 import {PostsService} from "../../services/posts.service";
+import {ReactionService} from "../../services/reaction.service";
 
 @Component({
   selector: 'post',
@@ -25,7 +26,7 @@ export class PostComponent implements OnInit {
 
   inputValue: string;
 
-  constructor(private commentsService: CommentsService, public authService: AuthService, private router: Router, private postsService: PostsService) {
+  constructor(private commentsService: CommentsService, public authService: AuthService, private router: Router, private postsService: PostsService, private reactionService: ReactionService) {
   }
 
   ngOnInit(): void {
@@ -76,6 +77,7 @@ export class PostComponent implements OnInit {
     for (const comment of this.comments) {
       this.commentsService.deleteComment(comment.id);
     }
+    this.reactionService.deleteReactions(this.post.id);
     this.postsService.delete(this.post.id);
   }
 }
