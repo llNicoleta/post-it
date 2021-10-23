@@ -21,5 +21,5 @@
 - [x] Create posts.  
 - [x] React to posts.  
 - [x] Comment on posts.  
-- [ ] See user profile.  
-- [ ] See additional user details such as: personal posts, post count, description, full name.  
+- [x] See user profile.  
+- [x] See additional user details such as: personal posts, post count, description, full name.  
