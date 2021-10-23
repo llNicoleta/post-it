@@ -1,5 +1,5 @@
 <div *ngIf="post" class="post">
-  <div class="post-header">
+  <div class="post-header" (click)="goToUserProfile()">
     <avatar [avatar]="{size: 'lg'}"></avatar>
     <div class="post-info">
       <h3>{{post.username}}</h3>

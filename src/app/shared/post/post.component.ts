@@ -4,6 +4,7 @@ import {CommentsService} from "../../services/comments.service";
 import {AuthService} from "../../services/auth.service";
 import {map} from "rxjs/operators";
 import {CommentModel} from "../../models/comment.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'post',
@@ -23,7 +24,7 @@ export class PostComponent implements OnInit {
 
   inputValue: string;
 
-  constructor(private commentsService: CommentsService, private authService: AuthService) {
+  constructor(private commentsService: CommentsService, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -45,7 +46,6 @@ export class PostComponent implements OnInit {
         ))
     ).subscribe(data => {
       this.comments = data;
-      console.log(this.comments)
     })
   }
 
@@ -61,5 +61,9 @@ export class PostComponent implements OnInit {
 
   countComments() {
     return this.comments && this.comments.length ? this.comments.length : 0;
+  }
+
+  goToUserProfile() {
+    this.router.navigate(['user', this.post.userId]);
   }
 }

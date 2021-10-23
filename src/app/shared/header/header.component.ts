@@ -25,19 +25,21 @@ export class HeaderComponent implements OnInit {
     this.afsAuth.onAuthStateChanged(user => {
       this.authService.userState = user;
       if (user && user.uid !== null) {
-        this.afs.collection<UserModel>('Users').valueChanges().subscribe(data => {
+        this.afs.collection<UserModel>('/users').valueChanges().subscribe(data => {
           data = data.filter(({id}) => id === user.uid);
           this.authService.currentUser = data[0];
           this.headerOptions = [
             {
               title: 'Home',
               avatar: null,
-              icon: 'home'
+              icon: 'home',
+              link: 'home'
             },
             {
               title: this.authService.currentUser?.username,
               avatar: {source: this.authService.currentUser?.photo, alt: 'avatar'},
-              icon: ''
+              icon: '',
+              link: 'user'
             },
           ]
         });

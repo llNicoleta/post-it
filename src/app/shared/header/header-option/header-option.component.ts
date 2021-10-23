@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HeaderOptionModel} from "../../../models/header-option.model";
+import {Router} from "@angular/router";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'header-option',
@@ -8,11 +10,18 @@ import {HeaderOptionModel} from "../../../models/header-option.model";
 })
 export class HeaderOptionComponent implements OnInit {
   @Input()
-  option: HeaderOptionModel | undefined;
+  option: HeaderOptionModel;
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
+  redirect() {
+    if (this.option.link === 'home') {
+      this.router.navigate(['home']);
+    } else if (this.option.link === 'user') {
+      this.router.navigate(['user', this.authService.currentUser.id]);
+    }
+  }
 }

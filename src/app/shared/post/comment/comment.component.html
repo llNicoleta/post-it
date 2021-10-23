@@ -1,5 +1,5 @@
 <div *ngIf="comment" class="comment">
-  <div class="comment-header">
+  <div (click)="goToUserProfile()" class="comment-header">
     <avatar [avatar]="{size: 'sm'}"></avatar>
     <div class="comment-info">
       <h4>{{comment.username}}</h4>
