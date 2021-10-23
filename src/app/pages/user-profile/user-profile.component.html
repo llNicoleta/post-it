@@ -19,7 +19,14 @@
         <p class="sidebar-stat-number">{{countPosts()}}</p>
       </div>
     </div>
-      <button *ngIf="!user.isModerator && authService.currentUser.isModerator" type="button" mat-flat-button color="primary" (click)="makeModerator()">Make Moderator</button>
+    <button (click)="makeModerator()"
+            *ngIf="user && authService.currentUser && !user.isModerator && authService.currentUser.isModerator"
+            color="primary"
+            mat-flat-button
+            type="button"
+    >
+      Make Moderator
+    </button>
   </div>
 
 </div>
