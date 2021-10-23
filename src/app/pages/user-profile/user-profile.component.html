@@ -1,0 +1,28 @@
+<div *ngIf="user" class="profile">
+
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <img alt="" src="{{backdropUrl}}">
+      <div class="sidebar-avatar">
+        <avatar [avatar]="avatar"></avatar>
+      </div>
+      <h2>{{user.firstName}} {{user.lastName}}</h2>
+      <h4>{{user.email}}</h4>
+    </div>
+    <div class="sidebar-info">
+      <h2>{{user.username}}</h2>
+      <p>{{user.description}}</p>
+    </div>
+    <div class="sidebar-stats">
+      <div class="sidebar-stat">
+        <p>Post count:</p>
+        <p class="sidebar-stat-number">{{countPosts()}}</p>
+      </div>
+    </div>
+      <button *ngIf="!user.isModerator && authService.currentUser.isModerator" type="button" mat-flat-button color="primary" (click)="makeModerator()">Make Moderator</button>
+  </div>
+
+</div>
+<div class="posts">
+  <post *ngFor="let post of posts" [post]="post"></post>
+</div>

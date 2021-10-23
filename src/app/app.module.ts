@@ -23,6 +23,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { PostComponent } from './shared/post/post.component';
 import { ReactionComponent } from './shared/post/reaction/reaction.component';
 import { CommentComponent } from './shared/post/comment/comment.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CommentComponent } from './shared/post/comment/comment.component';
     PostComponent,
     ReactionComponent,
     CommentComponent,
+    UserProfileComponent,
 
   ],
   imports: [

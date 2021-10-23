@@ -1,0 +1,117 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../../assets/images/blob-scene-haikei.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-width: 100vw;
+  min-height: 91.8vh;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  width: 20%;
+  position: fixed;
+  left: 20px;
+  top: 100px;
+}
+
+.sidebar-avatar {
+  margin-bottom: 0.6rem;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-bottom: 0;
+  border-top-left-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
+  background-color: white;
+  padding-bottom: 0.6rem;
+}
+
+.sidebar-top > img {
+  margin-bottom: -1.2rem;
+  width: 100%;
+  height: 3.75rem;
+  border-top-left-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
+  object-fit: cover;
+}
+
+.sidebar-top > h4 {
+  color: gray;
+  font-size: 12px;
+  font-weight: lighter;
+  padding: 0.3rem 0 0 0;
+}
+
+.sidebar > h2 {
+  font-size: 18px;
+  max-inline-size: 80%;
+  overflow-wrap: normal;
+}
+
+.sidebar > h4 {
+  max-inline-size: 80%;
+  overflow-wrap: normal;
+}
+
+.sidebar-stats {
+  padding: 0.6rem;
+  margin-bottom: 0.6rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-bottom-left-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem;
+}
+
+.sidebar-stat {
+  margin-top: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar-stat-number {
+  font-weight: bold !important;
+  color: #0a66c2 !important;
+}
+
+.sidebar-stat > p {
+  color: gray;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 0 0.3rem;
+}
+
+.sidebar-info {
+  padding-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-bottom: 0;
+  background-color: white;
+  padding-bottom: 0.6rem;
+}
+
+.sidebar-info > p {
+  max-inline-size: 80%;
+  overflow-wrap: normal;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  margin-top: 60px;
+}
+
+button {
+  margin-top: 0.6rem;
+  justify-self: center;
+}
