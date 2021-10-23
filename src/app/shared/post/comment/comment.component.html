@@ -1,4 +1,13 @@
 <div *ngIf="comment" class="comment">
+  <button *ngIf="canDelete()" mat-icon-button [matMenuTriggerFor]="menu" class="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="deleteComment()">
+      <mat-icon>delete</mat-icon>
+      <span>Delete comment</span>
+    </button>
+  </mat-menu>
   <div (click)="goToUserProfile()" class="comment-header">
     <avatar [avatar]="{size: 'sm'}"></avatar>
     <div class="comment-info">

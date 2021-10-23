@@ -21,6 +21,10 @@ export class PostsService {
     return this.postsReference.add({...post});
   }
 
+  delete(postId: string | undefined) {
+    return this.postsReference.doc(postId).delete();
+  }
+
   getUserPosts(userId: string | null) {
     return this.afs.collection(this.dbPath, ref => ref.orderBy('timestamp', 'desc').where('userId', '==', `${userId}`));
   }

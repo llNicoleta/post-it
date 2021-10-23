@@ -1,4 +1,13 @@
 <div *ngIf="post" class="post">
+  <button *ngIf="canDelete()" mat-icon-button [matMenuTriggerFor]="menu" class="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="deletePost()">
+      <mat-icon>delete</mat-icon>
+      <span>Delete post</span>
+    </button>
+  </mat-menu>
   <div class="post-header" (click)="goToUserProfile()">
     <avatar [avatar]="{size: 'lg'}"></avatar>
     <div class="post-info">

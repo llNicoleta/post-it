@@ -24,6 +24,7 @@ import { PostComponent } from './shared/post/post.component';
 import { ReactionComponent } from './shared/post/reaction/reaction.component';
 import { CommentComponent } from './shared/post/comment/comment.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     ReactiveFormsModule,
     MatStepperModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -27,7 +27,6 @@ export class UserProfileComponent implements OnInit {
 
   backdropUrl = 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';
 
-
   subscription: Subscription;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private postsService: PostsService, public authService: AuthService) { }
@@ -60,6 +59,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   makeModerator() {
-
+    this.userService.makeModerator(this.userId);
   }
 }

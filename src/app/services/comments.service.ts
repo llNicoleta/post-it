@@ -19,4 +19,8 @@ export class CommentsService {
   addComment(comment: CommentModel) {
     return this.afs.collection(this.dbPath).add({...comment});
   }
+
+  deleteComment(commentId: string | undefined) {
+    return this.afs.collection(this.dbPath).doc(commentId).delete();
+  }
 }

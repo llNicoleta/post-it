@@ -1,3 +1,7 @@
+.comment {
+  position: relative;
+}
+
 .comment-header {
   display: flex;
   margin-bottom: 0.625rem;
@@ -16,4 +20,10 @@
 .comment-body {
   overflow-wrap: anywhere;
   margin: 1rem 0;
+}
+
+.menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }

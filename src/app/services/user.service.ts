@@ -17,7 +17,7 @@ export class UserService {
     }))
   }
 
-  makeModerator(userId: string) {
-    this.afs.collection<UserModel>(this.dbPath).doc(userId).update({'isModerator': true});
+  makeModerator(userId: string | null) {
+    this.afs.collection<UserModel>(this.dbPath).doc(userId!).update({isModerator: true});
   }
 }

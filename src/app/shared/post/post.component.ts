@@ -5,6 +5,7 @@ import {AuthService} from "../../services/auth.service";
 import {map} from "rxjs/operators";
 import {CommentModel} from "../../models/comment.model";
 import {Router} from "@angular/router";
+import {PostsService} from "../../services/posts.service";
 
 @Component({
   selector: 'post',
@@ -24,7 +25,7 @@ export class PostComponent implements OnInit {
 
   inputValue: string;
 
-  constructor(private commentsService: CommentsService, private authService: AuthService, private router: Router) {
+  constructor(private commentsService: CommentsService, public authService: AuthService, private router: Router, private postsService: PostsService) {
   }
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class PostComponent implements OnInit {
   }
 
   toggleShowComments() {
-    this.showComments= !this.showComments;
+    this.showComments = !this.showComments;
   }
 
   retrieveComments() {
@@ -65,5 +66,16 @@ export class PostComponent implements OnInit {
 
   goToUserProfile() {
     this.router.navigate(['user', this.post.userId]);
+  }
+
+  canDelete() {
+    return this.authService.currentUser && this.post && (this.post.userId === this.authService.currentUser.id || this.authService.currentUser.isModerator);
+  }
+
+  deletePost() {
+    for (const comment of this.comments) {
+      this.commentsService.deleteComment(comment.id);
+    }
+    this.postsService.delete(this.post.id);
   }
 }
