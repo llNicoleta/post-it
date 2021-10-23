@@ -9,8 +9,8 @@ export class PostsService {
   private dbPath = '/posts';
   postsReference: AngularFirestoreCollection<PostModel>;
 
-  constructor(private firestore: AngularFirestore) {
-    this.postsReference = firestore.collection(this.dbPath, ref => ref.orderBy('timestamp', "desc"));
+  constructor(private afs: AngularFirestore) {
+    this.postsReference = this.afs.collection(this.dbPath, ref => ref.orderBy('timestamp', "desc"));
   }
 
   getPosts(): AngularFirestoreCollection<PostModel> {
@@ -21,4 +21,7 @@ export class PostsService {
     return this.postsReference.add({...post});
   }
 
+  getUserPosts(userId: string | null) {
+    return this.afs.collection(this.dbPath, ref => ref.orderBy('timestamp', 'desc').where('userId', '==', `${userId}`));
+  }
 }
