@@ -9,7 +9,6 @@
     <button mat-flat-button (click)="authService.signOut()">Sign Out</button>
   </div>
   <div class="header-right" *ngIf="!authService.isLoggedIn">
-    <header-option *ngFor="let headerOption of headerOptions" [option]="headerOption"></header-option>
     <button mat-flat-button [routerLink]="['sign-in']">Sign In</button>
   </div>
 </div>
