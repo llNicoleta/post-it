@@ -21,9 +21,7 @@ export class UserProfileComponent implements OnInit {
   user: UserModel;
   posts?: Array<PostModel>
 
-  avatar: AvatarModel = {
-    size: 'lg',
-  };
+  avatar: AvatarModel;
 
   backdropUrl = 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';
 
@@ -32,8 +30,12 @@ export class UserProfileComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService: UserService, private postsService: PostsService, public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.userId = this.route.snapshot.paramMap.get('id');
+    this.userId = <string>this.route.snapshot.paramMap.get('id');
     this.subscription = this.userService.getUser(this.userId!).subscribe(data => this.user = data);
+    this.avatar = {
+      // source: this.user?.photo,
+      size: 'lg'
+    }
     this.retrievePosts();
   }
 

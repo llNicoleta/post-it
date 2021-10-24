@@ -12,6 +12,8 @@ export class AuthService {
   userState: any;
   currentUser: UserModel;
 
+  avatar = 'https://eu.ui-avatars.com/api/?';
+
   constructor(
     private afs: AngularFirestore,
     private afAuth: AngularFireAuth,
@@ -52,6 +54,7 @@ export class AuthService {
   signUp(user: UserModel) {
     return this.afAuth.createUserWithEmailAndPassword(user.email, <string>user.password)
       .then((result) => {
+        let avatarName = user.firstName && user.lastName ? `${user.firstName}+${user.lastName}` : user.username;
         this.afs.collection(this.dbPath).doc(result.user?.uid).set({
           id: result.user?.uid,
           email: user.email,
@@ -59,7 +62,7 @@ export class AuthService {
           firstName: user.firstName,
           lastName: user.lastName,
           description: user.description,
-          photo: user.photo,
+          photo: `${this.avatar}name=${avatarName}&background=4285F4&color=fff`,
           isModerator: user.isModerator
         }).then(() => {
           this.router.navigate(['home']).then();

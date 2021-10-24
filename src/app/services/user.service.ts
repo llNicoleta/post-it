@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private afs: AngularFirestore) { }
 
-  getUser(userId: string) {
+    getUser(userId: string | undefined) {
     return this.afs.collection<UserModel>(this.dbPath).doc(userId).snapshotChanges().pipe(map(a => {
       return a.payload.data() as UserModel;
     }))

@@ -2,11 +2,14 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PostModel} from "../../models/post.model";
 import {CommentsService} from "../../services/comments.service";
 import {AuthService} from "../../services/auth.service";
-import {map} from "rxjs/operators";
+import {map, share} from "rxjs/operators";
 import {CommentModel} from "../../models/comment.model";
 import {Router} from "@angular/router";
 import {PostsService} from "../../services/posts.service";
 import {ReactionService} from "../../services/reaction.service";
+import {UserService} from "../../services/user.service";
+import {UserModel} from "../../models/user.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'post',
@@ -17,21 +20,27 @@ export class PostComponent implements OnInit {
   @Input()
   post: PostModel;
 
+  user: Observable<UserModel>;
+
   comments: CommentModel[];
 
   showComments: boolean;
 
-  @Input()
-  index: number;
-
   inputValue: string;
 
-  constructor(private commentsService: CommentsService, public authService: AuthService, private router: Router, private postsService: PostsService, private reactionService: ReactionService) {
+  constructor(private commentsService: CommentsService,
+              public authService: AuthService,
+              private router: Router,
+              private postsService: PostsService,
+              private reactionService: ReactionService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
+    this.user = this.userService.getUser(this.post.userId).pipe(share());
     this.retrieveComments();
     this.showComments = false;
+
   }
 
   toggleShowComments() {

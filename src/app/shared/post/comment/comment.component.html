@@ -9,7 +9,7 @@
     </button>
   </mat-menu>
   <div (click)="goToUserProfile()" class="comment-header">
-    <avatar [avatar]="{size: 'sm'}"></avatar>
+    <avatar *ngIf="user | async as u" [avatar]="{source: u.photo, size: 'sm'}"></avatar>
     <div class="comment-info">
       <h4>{{comment.username}}</h4>
     </div>

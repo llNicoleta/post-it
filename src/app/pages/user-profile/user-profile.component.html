@@ -4,7 +4,7 @@
     <div class="sidebar-top">
       <img alt="" src="{{backdropUrl}}">
       <div class="sidebar-avatar">
-        <avatar [avatar]="avatar"></avatar>
+        <avatar [avatar]="{source: user.photo, size: 'lg'}"></avatar>
       </div>
       <h2>{{user.firstName}} {{user.lastName}}</h2>
       <h4>{{user.email}}</h4>

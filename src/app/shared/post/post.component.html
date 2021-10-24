@@ -8,8 +8,8 @@
       <span>Delete post</span>
     </button>
   </mat-menu>
-  <div class="post-header" (click)="goToUserProfile()">
-    <avatar [avatar]="{size: 'lg'}"></avatar>
+  <div class="post-header" (click)="goToUserProfile()" *ngIf="(user | async)">
+    <avatar *ngIf="user | async as u" [avatar]="{source: u.photo, size: 'lg'}"></avatar>
     <div class="post-info">
       <h3>{{post.username}}</h3>
       <p>{{post.description}}</p>

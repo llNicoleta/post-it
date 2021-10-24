@@ -3,6 +3,10 @@ import {CommentModel} from "../../../models/comment.model";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
 import {CommentsService} from "../../../services/comments.service";
+import {UserService} from "../../../services/user.service";
+import {UserModel} from "../../../models/user.model";
+import {Observable, Subscription} from "rxjs";
+import {share} from "rxjs/operators";
 
 @Component({
   selector: 'comment',
@@ -13,10 +17,13 @@ export class CommentComponent implements OnInit {
   @Input()
   comment: CommentModel;
 
-  constructor(public authService: AuthService, private router: Router, private commentsService: CommentsService) {
+  user: Observable<UserModel>;
+
+  constructor(public authService: AuthService, private router: Router, private commentsService: CommentsService, private userService: UserService) {
   }
 
   ngOnInit(): void {
+    this.user = this.userService.getUser(this.comment.userId).pipe(share());
   }
 
   goToUserProfile() {

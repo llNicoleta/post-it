@@ -1,6 +1,6 @@
 <img
   *ngIf="avatar"
-  src="{{avatar.source || defaultAvatar}}"
+  src="{{source}}"
   alt="{{avatar.alt}}"
   [ngClass]="{
   'small':avatar.size=='sm'||!avatar.size,
