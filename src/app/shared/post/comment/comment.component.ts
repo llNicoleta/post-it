@@ -27,7 +27,8 @@ export class CommentComponent implements OnInit {
   }
 
   goToUserProfile() {
-    this.router.navigate(['user', this.comment.userId]);
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+      this.router.navigate(['user', this.comment.userId]));
   }
 
   canDelete() {

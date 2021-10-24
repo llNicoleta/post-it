@@ -20,9 +20,11 @@ export class HeaderOptionComponent implements OnInit {
 
   redirect() {
     if (this.option.link === 'home') {
-      this.router.navigate(['home']);
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+        this.router.navigate(['home']));
     } else if (this.option.link === 'user') {
-      this.router.navigate(['user', this.authService.currentUser.id]);
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+        this.router.navigate(['user', this.authService.currentUser.id]));
     }
   }
 }

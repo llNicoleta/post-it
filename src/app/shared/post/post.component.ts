@@ -75,7 +75,8 @@ export class PostComponent implements OnInit {
   }
 
   goToUserProfile() {
-    this.router.navigate(['user', this.post.userId]);
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+      this.router.navigate(['user', this.post.userId]));
   }
 
   canDelete() {
