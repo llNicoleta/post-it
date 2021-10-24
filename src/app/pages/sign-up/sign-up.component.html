@@ -7,19 +7,22 @@
           <ng-template matStepLabel>Credentials</ng-template>
           <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
-            <input formControlName="username" matInput type="text" placeholder="Username" required>
+            <input formControlName="username" matInput placeholder="Username" required type="text">
+            <mat-error *ngIf="username?.invalid && username?.dirty">
+              {{username?.value.length > 0 ? 'The username is already taken.' : 'The username is required.'}}
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input formControlName="email" matInput type="text" placeholder="Email" required>
-            <mat-error *ngIf="credentialsForm.controls['password'].hasError('email')">
+            <input formControlName="email" matInput placeholder="Email" required type="text">
+            <mat-error *ngIf="email?.hasError('email')">
               The email address isn't valid.
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input formControlName="password" matInput type="password" placeholder="Password" required>
-            <mat-error *ngIf="credentialsForm.controls['password'].hasError('minlength')">
+            <input formControlName="password" matInput placeholder="Password" required type="password">
+            <mat-error *ngIf="password?.hasError('minlength')">
               The password must have at least 8 characters.
             </mat-error>
           </mat-form-field>
@@ -33,26 +36,28 @@
           <ng-template matStepLabel>Extra info</ng-template>
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input formControlName="firstName" matInput type="text" placeholder="First Name">
+            <input formControlName="firstName" matInput placeholder="First Name" type="text">
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input formControlName="lastName" matInput type="text" placeholder="Last Name">
+            <input formControlName="lastName" matInput placeholder="Last Name" type="text">
           </mat-form-field>
-<!--          <mat-label>Upload a photo</mat-label>-->
-<!--          <input formControlName="photo" type="file" placeholder="Photo" accept=".png,.jpg">-->
+          <!--          <mat-label>Upload a photo</mat-label>-->
+          <!--          <input formControlName="photo" type="file" placeholder="Photo" accept=".png,.jpg">-->
           <mat-form-field appearance="outline">
             <mat-label>Add a description</mat-label>
-            <textarea formControlName="description" matInput type="text" placeholder="Description"></textarea>
+            <textarea formControlName="description" matInput placeholder="Description" type="text"></textarea>
           </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
         </form>
       </mat-card>
-      <button type="submit" mat-flat-button color="primary" [disabled]="!credentialsForm.valid" (click)="signUp()">Sign Up</button>
+      <button (click)="signUp()" [disabled]="!credentialsForm.valid" color="primary" mat-flat-button type="submit">Sign
+        Up
+      </button>
     </mat-step>
   </mat-stepper>
   <div class="sign-up">
     <p>Already have an account?</p>
-    <a mat-button color="primary" [routerLink]="['/sign-in']">Sign In</a>
+    <a [routerLink]="['/sign-in']" color="primary" mat-button>Sign In</a>
   </div>
 </div>

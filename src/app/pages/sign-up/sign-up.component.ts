@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {UserModel} from "../../models/user.model";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {TakenUsername} from "../../shared/validators/taken-username";
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +14,7 @@ export class SignUpComponent implements OnInit {
   credentialsForm!: FormGroup;
   extraForm!: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private afs: AngularFirestore) {
   }
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class SignUpComponent implements OnInit {
 
   buildCredentialsForm() {
     this.credentialsForm = new FormGroup({
-      username: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required], TakenUsername.username(this.afs)),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     })
@@ -35,6 +37,18 @@ export class SignUpComponent implements OnInit {
       description: new FormControl(''),
       photo: new FormControl(null)
     })
+  }
+
+  get username() {
+    return this.credentialsForm.get('username');
+  }
+
+  get email() {
+    return this.credentialsForm.get('email');
+  }
+
+  get password() {
+    return this.credentialsForm.get('password');
   }
 
   signUp() {
