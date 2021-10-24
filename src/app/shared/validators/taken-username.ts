@@ -10,7 +10,7 @@ export class TakenUsername {
         .valueChanges().pipe(
           debounceTime(500),
           take(1),
-          map(arr => arr.length ? {usernameAvailable: false} : null)
+          map(arr => arr.length ? {usernameTaken: true} : null)
         )
     }
   }

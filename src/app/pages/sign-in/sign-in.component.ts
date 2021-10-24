@@ -23,6 +23,14 @@ export class SignInComponent implements OnInit {
     })
   }
 
+  get email() {
+    return this.signInForm.get('email');
+  }
+
+  get password() {
+    return this.signInForm.get('password');
+  }
+
   signIn() {
     this.authService.signIn(this.signInForm.value.email, this.signInForm.value.password).then();
   }

@@ -24,7 +24,7 @@ export class SignUpComponent implements OnInit {
 
   buildCredentialsForm() {
     this.credentialsForm = new FormGroup({
-      username: new FormControl('', [Validators.required], TakenUsername.username(this.afs)),
+      username: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z0-9_-]{4,15}$')], TakenUsername.username(this.afs)),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     })
@@ -32,9 +32,9 @@ export class SignUpComponent implements OnInit {
 
   buildExtraForm() {
     this.extraForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      description: new FormControl(''),
+      firstName: new FormControl('', Validators.pattern('^[A-Za-z-]{1,20}$')),
+      lastName: new FormControl('', Validators.pattern('^[A-Za-z\ -]{1,20}$')),
+      description: new FormControl('', Validators.pattern('^[A-Za-z0-9\ _\?!\.#()-]{1,100}$')),
       photo: new FormControl(null)
     })
   }
@@ -49,6 +49,18 @@ export class SignUpComponent implements OnInit {
 
   get password() {
     return this.credentialsForm.get('password');
+  }
+
+  get firstName() {
+    return this.extraForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.extraForm.get('lastName');
+  }
+
+  get description() {
+    return this.extraForm.get('description');
   }
 
   signUp() {
