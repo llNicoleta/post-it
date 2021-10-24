@@ -1,8 +1,8 @@
-<div class="feed-input-container">
+<div class="feed-input-container" *ngIf="authService.isLoggedIn">
   <div class="feed-input">
     <mat-icon>create</mat-icon>
     <form (ngSubmit)="addPost()">
-      <input name="post" type="text" [(ngModel)]="inputValue">
+      <input [(ngModel)]="inputValue" name="post" type="text">
       <button type="submit">Send</button>
     </form>
   </div>
@@ -15,6 +15,7 @@
 
 </div>
 
-<div class="posts">
+<div class="posts" *ngIf="authService.isLoggedIn">
   <post *ngFor="let post of posts" [post]="post"></post>
 </div>
+

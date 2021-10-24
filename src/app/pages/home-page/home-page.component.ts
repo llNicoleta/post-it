@@ -14,7 +14,7 @@ export class HomePageComponent implements OnInit {
   posts: Array<PostModel>;
   inputValue: string = '';
 
-  constructor(private postsService: PostsService, private authService: AuthService) {}
+  constructor(private postsService: PostsService, public authService: AuthService) {}
 
   ngOnInit(): void {
     this.retrievePosts();
