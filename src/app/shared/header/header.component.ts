@@ -6,6 +6,9 @@ import {UserModel} from "../../models/user.model";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import firebase from "firebase/compat";
+import User = firebase.User;
 
 @Component({
   selector: 'header',
@@ -17,9 +20,13 @@ export class HeaderComponent implements OnInit {
     alt: 'avatar'
   }
 
+  searchValue = '';
+  searchResults: Observable<UserModel[]>;
+
   headerOptions: Array<HeaderOptionModel> | undefined;
 
-  constructor(public authService: AuthService, public afs: AngularFirestore, public afsAuth: AngularFireAuth, public router: Router) { }
+  constructor(public authService: AuthService, public afs: AngularFirestore, public afsAuth: AngularFireAuth, public router: Router) {
+  }
 
   ngOnInit() {
     this.afsAuth.onAuthStateChanged(user => {
@@ -47,4 +54,19 @@ export class HeaderComponent implements OnInit {
     }).then()
   }
 
+  search() {
+    if (this.searchValue) {
+      this.searchResults = this.afs.collection<UserModel>('users', ref => ref
+        .orderBy("username")
+        .startAt(this.searchValue.toLowerCase())
+        .endAt(this.searchValue.toLowerCase() + "\uf8ff")
+        .limit(10))
+        .valueChanges();
+    }
+  }
+
+  goToUserProfile(user: UserModel) {
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+      this.router.navigate(['user', user.id]).then(() => this.searchValue = ''));
+  }
 }

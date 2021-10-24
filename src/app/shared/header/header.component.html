@@ -4,6 +4,16 @@
       <h1>Post <span>It</span></h1>
     </a>
   </div>
+  <div class="header-search" *ngIf="authService.isLoggedIn">
+    <mat-icon>search</mat-icon>
+    <input (keydown)="search()" [(ngModel)]="searchValue" type="text" placeholder="Search">
+  </div>
+  <div class="found-users" *ngIf="searchValue.length !== 0">
+    <div class="user" *ngFor="let result of searchResults | async; index as i" (click)="goToUserProfile(result)">
+      <avatar [avatar]="{source: result.photo, size: 'sm'}"></avatar>
+      <p>{{result.username}}</p>
+    </div>
+  </div>
   <div class="header-right" *ngIf="authService.isLoggedIn">
     <header-option *ngFor="let headerOption of headerOptions" [option]="headerOption"></header-option>
     <button mat-flat-button (click)="authService.signOut()">Sign Out</button>
