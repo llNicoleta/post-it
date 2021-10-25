@@ -40,13 +40,22 @@ export class HeaderComponent implements OnInit {
               title: 'Home',
               avatar: null,
               icon: 'home',
-              link: 'home'
+              link: 'home',
+              display: true
+            },
+            {
+              title: 'Dashboard',
+              avatar: null,
+              icon: 'dashboard',
+              link: 'dashboard',
+              display: this.authService.isModerator
             },
             {
               title: this.authService.currentUser?.username,
               avatar: {source: this.authService.currentUser?.photo, alt: 'avatar'},
               icon: '',
-              link: 'user'
+              link: 'user',
+              display: true
             },
           ]
         });

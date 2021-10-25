@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {UserModel} from "../models/user.model";
 import {map} from "rxjs/operators";
@@ -9,9 +9,14 @@ import {map} from "rxjs/operators";
 export class UserService {
   dbPath = '/users';
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore) {
+  }
 
-    getUser(userId: string | undefined) {
+  getUsers() {
+    return this.afs.collection<UserService>(this.dbPath,ref => ref.orderBy('username', "asc"));
+  }
+
+  getUser(userId: string | undefined) {
     return this.afs.collection<UserModel>(this.dbPath).doc(userId).snapshotChanges().pipe(map(a => {
       return a.payload.data() as UserModel;
     }))

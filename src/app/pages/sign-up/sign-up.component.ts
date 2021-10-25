@@ -4,6 +4,7 @@ import {AuthService} from "../../services/auth.service";
 import {UserModel} from "../../models/user.model";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {TakenUsername} from "../../shared/validators/taken-username";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -14,10 +15,12 @@ export class SignUpComponent implements OnInit {
   credentialsForm!: FormGroup;
   extraForm!: FormGroup;
 
-  constructor(private authService: AuthService, private afs: AngularFirestore) {
+  constructor(private authService: AuthService, private afs: AngularFirestore, private router: Router) {
   }
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn)
+      this.router.navigate(['home']);
     this.buildCredentialsForm();
     this.buildExtraForm();
   }

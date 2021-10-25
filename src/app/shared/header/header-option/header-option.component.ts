@@ -25,6 +25,9 @@ export class HeaderOptionComponent implements OnInit {
     } else if (this.option.link === 'user') {
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
         this.router.navigate(['user', this.authService.currentUser.id]));
+    } else if (this.option.link === 'dashboard') {
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+        this.router.navigate(['dashboard']));
     }
   }
 }

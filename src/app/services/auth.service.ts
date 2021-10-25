@@ -74,13 +74,17 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(<string>localStorage.getItem('user'));
-    return (user && this.currentUser && this.userState);
+    return user && this.userState;
+  }
+
+  get isModerator() {
+    return this.isLoggedIn && this.currentUser.isModerator;
   }
 
   signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']).then();
+      this.router.navigate(['sign-in']);
     }).catch(err => console.log(err))
 
   }
