@@ -61,6 +61,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   makeModerator() {
-    this.userService.makeModerator(this.userId);
+    this.userService.makeModerator(this.userId!);
   }
 }

@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+<h1>Dashboard</h1>
+
+<div *ngIf="users && authService.isModerator" class="users">
+  <user-card *ngFor="let user of users" [user]="user"></user-card>
+</div>

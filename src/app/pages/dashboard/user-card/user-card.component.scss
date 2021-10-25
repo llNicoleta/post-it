@@ -1,0 +1,28 @@
+.user {
+  position: relative;
+  background-color: white;
+  padding: 1rem;
+  margin-bottom: 0.625rem;
+  border-radius: 0.625rem;
+  box-shadow: 1px 1px 5px lightgray;
+  display: flex;
+  justify-content: space-between;
+
+  .info {
+    display: flex;
+    align-items: center;
+
+    & > h3 {
+      margin-left: 1rem;
+    }
+  }
+
+  .actions {
+    display: flex;
+
+    button {
+      margin: 0 0.6rem;
+    }
+  }
+}
+

@@ -13,7 +13,7 @@ export class ModeratorGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!this.authService.isModerator) {
+    if (!this.authService.isModerator && this.authService.userState) {
       this.router.navigate(['home']).then();
       return false;
     } else

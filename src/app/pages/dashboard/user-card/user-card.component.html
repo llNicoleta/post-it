@@ -1,0 +1,11 @@
+<div *ngIf="user" class="user">
+  <div class="info" [routerLink]="['user', user.id]">
+    <avatar [avatar]="{source: user.photo, size: 'lg'}"></avatar>
+    <h3>{{user.username}}</h3>
+  </div>
+  <div class="actions">
+    <button *ngIf="!user.isModerator" mat-flat-button color="primary" (click)="userService.makeModerator(user.id)">+ Moderator</button>
+    <button *ngIf="user.isModerator" mat-flat-button color="accent" (click)="userService.unmakeModerator(user.id)">- Moderator</button>
+    <button *ngIf="!user.isModerator" mat-flat-button color="warn" (click)="userService.deleteUser(user.id)">Delete</button>
+  </div>
+</div>

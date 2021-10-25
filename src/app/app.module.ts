@@ -26,6 +26,7 @@ import { CommentComponent } from './shared/post/comment/comment.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { UserCardComponent } from './pages/dashboard/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     CommentComponent,
     UserProfileComponent,
     DashboardComponent,
+    UserCardComponent,
 
   ],
   imports: [

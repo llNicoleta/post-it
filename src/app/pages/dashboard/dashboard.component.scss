@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../../assets/images/blob-scene-haikei-dashboard.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  max-width: 100vw;
+  min-height: 91.8vh;
+  overflow-x: hidden;
+}
+
+h1 {
+  margin: 2rem 0;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+}

@@ -13,7 +13,7 @@ export class UserService {
   }
 
   getUsers() {
-    return this.afs.collection<UserService>(this.dbPath,ref => ref.orderBy('username', "asc"));
+    return this.afs.collection<UserModel>(this.dbPath,ref => ref.orderBy('username', "asc"));
   }
 
   getUser(userId: string | undefined) {
@@ -22,7 +22,15 @@ export class UserService {
     }))
   }
 
-  makeModerator(userId: string | null) {
+  makeModerator(userId: string | undefined) {
     this.afs.collection<UserModel>(this.dbPath).doc(userId!).update({isModerator: true});
+  }
+
+  unmakeModerator(userId: string | undefined) {
+    this.afs.collection<UserModel>(this.dbPath).doc(userId!).update({isModerator: false});
+  }
+
+  deleteUser(userId: string | undefined) {
+    this.afs.collection<UserModel>(this.dbPath).doc(userId).delete();
   }
 }
