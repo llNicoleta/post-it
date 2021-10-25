@@ -1,5 +1,5 @@
 <div *ngIf="user" class="user">
-  <div class="info" [routerLink]="['user', user.id]">
+  <div class="info" [routerLink]="['/user', user.id]">
     <avatar [avatar]="{source: user.photo, size: 'lg'}"></avatar>
     <h3>{{user.username}}</h3>
   </div>
