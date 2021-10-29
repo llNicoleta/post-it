@@ -14,9 +14,7 @@ export class HeaderOptionComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { }
 
-  ngOnInit(): void {
-    console.log(this.option)
-  }
+  ngOnInit(): void {}
 
   redirect() {
     if (this.option.link === 'home') {

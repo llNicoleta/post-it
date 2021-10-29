@@ -12,7 +12,11 @@ export class CommentsService {
   constructor(private afs: AngularFirestore) {
   }
 
-  getComments(postId?: string) {
+  getComments() {
+    return this.afs.collection(this.dbPath, ref => ref.orderBy('timestamp', 'desc'));
+  }
+
+  getPostComments(postId?: string) {
     return this.afs.collection(this.dbPath, ref => ref.orderBy('timestamp', 'desc').where('postId', '==', `${postId}`));
   }
 

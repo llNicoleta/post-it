@@ -6,6 +6,6 @@
   <div class="actions">
     <button *ngIf="!user.isModerator" mat-flat-button color="primary" (click)="userService.makeModerator(user.id)">+ Moderator</button>
     <button *ngIf="user.isModerator" mat-flat-button color="accent" (click)="userService.unmakeModerator(user.id)">- Moderator</button>
-    <button *ngIf="!user.isModerator" mat-flat-button color="warn" (click)="userService.deleteUser(user.id)">Delete</button>
+    <button *ngIf="!user.isModerator" mat-flat-button color="warn" (click)="deleteUser()">Delete</button>
   </div>
 </div>

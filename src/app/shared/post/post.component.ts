@@ -48,7 +48,7 @@ export class PostComponent implements OnInit {
   }
 
   retrieveComments() {
-    this.commentsService.getComments(this.post.id).snapshotChanges().pipe(
+    this.commentsService.getPostComments(this.post.id).snapshotChanges().pipe(
       map(changes =>
         changes.map(c => {
             const data = c.payload.doc.data() as CommentModel;
@@ -84,10 +84,6 @@ export class PostComponent implements OnInit {
   }
 
   deletePost() {
-    for (const comment of this.comments) {
-      this.commentsService.deleteComment(comment.id);
-    }
-    this.reactionService.deleteReactions(this.post.id);
     this.postsService.delete(this.post.id);
   }
 }
