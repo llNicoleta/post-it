@@ -11,7 +11,7 @@
 **[‘/dashboard’]** - shows all the users with moderator and deletion options - only available to a moderator.
 
 ### Types of users:
-**Normal user:** Can only write posts, see other posts, additionally react to and comment on other posts and delete their own posts.
+**Normal user:** Can only write posts, see other posts, additionally react to and comment on other posts and delete their own posts.    
 **Moderator:** Just like the Normal user, but can also delete posts for whatever reasons and give other users the Moderator role as well as delete other users.
 
 ### Functionalities:
